@@ -13,7 +13,7 @@ function Header() {
   ];
 
   return (
-    <header className="bg-[#48596f] text-white p-4">
+    <header className="bg-[#48596f] text-white p-8 py-3">
       <div className="flex justify-between items-center">
         <div className="flex items-center space-x-2">
           <img
@@ -23,7 +23,7 @@ function Header() {
           />
         </div>
         <nav>
-          <ul className="flex space-x-6">
+          <ul className="flex space-x-6 item-center">
             {navItems.map((item) => (
               <li
                 key={item.name}
@@ -36,7 +36,7 @@ function Header() {
               </li>
             ))}
             <li className="cursor-pointer flex items-center">
-              <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center">
                 <span className="text-white font-medium">HR</span>
               </div>
             </li>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Search, Bell } from "lucide-react";
 
 import Header from "../CompanyDashboardHeader.jsx";
-import Sidebar from "./../../components/Sidebar.jsx";
+import Sidebar from "../CompanyDashboardSidebar.jsx";
 import StatCard from "./../../components/CompanyDashboard/StatCard.jsx";
 import AnalyticsChart from "./../../components/CompanyDashboard/AnalyticsChart.jsx";
 import CandidatePipeline from "./../../components/CompanyDashboard/CandidatePipeline.jsx";

@@ -4,6 +4,7 @@ import Login from "./components/pages/LoginPage.jsx";
 import Signup from "./components/pages/Signup.jsx";
 import CompanyDashboard from "./components/pages/CompanyDashboard.jsx";
 import UserProfile from "./components/pages/UserProfile.jsx";
+import Companies from "./components/pages/Companies.jsx";
 
 function App() {
   const userouter = createBrowserRouter([
@@ -22,6 +23,10 @@ function App() {
     {
       path: "/user-profile",
       element: <UserProfile />,
+    },
+    {
+      path: "/companies",
+      element: <Companies />,
     },
   ]);
 
