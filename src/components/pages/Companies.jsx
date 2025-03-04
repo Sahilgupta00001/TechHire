@@ -1,7 +1,10 @@
 import React from "react";
 
 const Companies = () => {
-  return <div></div>;
+  return <div>
+Hi
+
+  </div>;
 };
 
 export default Companies;
