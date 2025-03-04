@@ -76,6 +76,16 @@ const CandidateProfile = () => {
       assignedManager: ["/avatars/avatar-1.jpg", "/avatars/avatar-2.jpg"],
       interviewPanel: ["/avatars/avatar-3.jpg", "/avatars/avatar-4.jpg"],
     },
+    {
+      title: "Technical test Interview",
+      mode: "Online Mode",
+      date: "2 Jan 2025",
+      time: "12:00 PM to 1:00 PM",
+      meetLink: "https://www.zoom.com/meetingchdjjso",
+      scheduledBy: "Darshal Sharma (2 Jan 2025)",
+      assignedManager: ["/avatars/avatar-1.jpg", "/avatars/avatar-2.jpg"],
+      interviewPanel: ["/avatars/avatar-3.jpg", "/avatars/avatar-4.jpg"],
+    },
   ];
 
   return (
@@ -128,11 +138,12 @@ const CandidateProfile = () => {
                     </div>
                   </div>
 
+                  {/* Profile Completion Bar */}
                   <div className="mb-6">
-                    <div className="flex justify-between items-center mb-2">
+                    <div className="flex justify-between items-center mb-2 relative">
                       <span className="text-gray-700">Profile completion</span>
                       <div className="flex items-center">
-                        <span className="text-sm text-blue-500 mr-2">
+                        <span className="text-sm text-blue-500 absolute bottom-[-40px]">
                           {candidateData.profileCompletion}%
                         </span>
                         <button className="text-blue-500">
@@ -141,6 +152,7 @@ const CandidateProfile = () => {
                         </button>
                       </div>
                     </div>
+
                     <div className="w-full bg-gray-200 rounded-full h-2.5">
                       <div
                         className="bg-blue-500 h-2.5 rounded-full"
@@ -149,32 +161,75 @@ const CandidateProfile = () => {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                    <div className="p-4 bg-gray-50 rounded-md">
-                      <div className="flex items-start">
-                        {candidateData.matched.icon}
-                        <div className="ml-2">
-                          <p className="text-sm text-gray-600">
-                            What thing matched
-                          </p>
-                          <p className="font-medium">
-                            {candidateData.matched.items.join(" , ")}
-                          </p>
+                  <div className="grid grid-cols-2 gap-4 mb-6">
+                    <div className="grid">
+                      <div className="p-4 bg-gray-50 rounded-md">
+                        <div className="flex items-start">
+                          {candidateData.matched.icon}
+                          <div className="ml-2">
+                            <p className="text-sm text-gray-600">
+                              What thing matched
+                            </p>
+                            <p className="font-medium">
+                              {candidateData.matched.items.join(" , ")}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="p-4 bg-gray-50 rounded-md">
+                        <div className="flex items-start">
+                          {candidateData.against.icon}
+                          <div className="ml-2">
+                            <p className="text-sm text-gray-600">
+                              What went Against
+                            </p>
+                            <p className="font-medium">
+                              {candidateData.against.items.join(" , ")}
+                            </p>
+                          </div>
                         </div>
                       </div>
                     </div>
-                    <div className="p-4 bg-gray-50 rounded-md">
-                      <div className="flex items-start">
-                        {candidateData.against.icon}
-                        <div className="ml-2">
-                          <p className="text-sm text-gray-600">
-                            What went Against
-                          </p>
-                          <p className="font-medium">
-                            {candidateData.against.items.join(" , ")}
-                          </p>
+
+                    {/* ATS Score */}
+                    <div className="md:w-32 mt-6 md:mt-0 md:ml-6 flex flex-col items-center justify-center">
+                      <div className="relative w-32 h-32">
+                        <svg className="w-full h-full" viewBox="0 0 100 100">
+                          <circle
+                            cx="50"
+                            cy="50"
+                            r="45"
+                            fill="none"
+                            stroke="#e6e6e6"
+                            strokeWidth="10"
+                          />
+                          <circle
+                            cx="50"
+                            cy="50"
+                            r="45"
+                            fill="none"
+                            stroke="#3b82f6"
+                            strokeWidth="10"
+                            strokeDasharray={`${
+                              (2 * Math.PI * 45 * candidateData.atsScore) / 100
+                            } ${
+                              (2 *
+                                Math.PI *
+                                45 *
+                                (100 - candidateData.atsScore)) /
+                              100
+                            }`}
+                            strokeDashoffset={(2 * Math.PI * 45 * 25) / 100}
+                          />
+                        </svg>
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <span className="text-3xl font-bold text-blue-500">
+                            {candidateData.atsScore}
+                          </span>
                         </div>
                       </div>
+
+                      <p className="mt-2 text-center font-medium">ATS Score</p>
                     </div>
                   </div>
 
@@ -222,43 +277,8 @@ const CandidateProfile = () => {
                   </div>
                 </div>
 
-                {/* Right side - ATS Score */}
-                <div className="md:w-64 mt-6 md:mt-0 md:ml-6 flex flex-col items-center">
-                  <div className="relative w-32 h-32">
-                    <svg className="w-full h-full" viewBox="0 0 100 100">
-                      <circle
-                        cx="50"
-                        cy="50"
-                        r="45"
-                        fill="none"
-                        stroke="#e6e6e6"
-                        strokeWidth="10"
-                      />
-                      <circle
-                        cx="50"
-                        cy="50"
-                        r="45"
-                        fill="none"
-                        stroke="#3b82f6"
-                        strokeWidth="10"
-                        strokeDasharray={`${
-                          (2 * Math.PI * 45 * candidateData.atsScore) / 100
-                        } ${
-                          (2 * Math.PI * 45 * (100 - candidateData.atsScore)) /
-                          100
-                        }`}
-                        strokeDashoffset={(2 * Math.PI * 45 * 25) / 100}
-                      />
-                    </svg>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-3xl font-bold text-blue-500">
-                        {candidateData.atsScore}
-                      </span>
-                    </div>
-                  </div>
-
-                  <p className="mt-2 text-center font-medium">ATS Score</p>
-
+                {/* Documents */}
+                <div className="w-full mt-6 md:mt-0 flex flex-col items-center">
                   <div className="mt-8 w-full">
                     <div className="border rounded-md p-4">
                       <div className="flex justify-between items-center mb-2">
@@ -267,7 +287,8 @@ const CandidateProfile = () => {
                           Click to download
                         </span>
                       </div>
-                      <div className="space-y-3">
+
+                      <div className="flex items-center gap-[10px]">
                         {candidateData.documents.map((doc, index) => (
                           <button
                             key={index}
